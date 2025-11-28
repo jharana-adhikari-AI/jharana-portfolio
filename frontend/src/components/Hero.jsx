@@ -17,8 +17,18 @@ export default function Hero() {
     >
       {/* Background with Light/Dark Mode Support */}
       <div className="absolute inset-0 z-0">
-        {/* Light mode: Clean white/gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-primary-50 dark:hidden" />
+        {/* Light mode: White background with profile image */}
+        <div className="absolute inset-0 dark:hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-primary-50" />
+          <div
+            className="absolute inset-0 bg-no-repeat bg-center"
+            style={{
+              backgroundImage: "url('/profile.png')",
+              backgroundSize: 'auto',
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/80" />
+        </div>
 
         {/* Dark mode: Dark background with profile image */}
         <div className="absolute inset-0 hidden dark:block">
