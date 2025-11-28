@@ -91,7 +91,7 @@ const getSharedResume = (req, res) => {
 // Download resume directly
 const downloadResume = (req, res) => {
   try {
-    const resumePath = join(__dirname, '../../frontend/public/resume.pdf')
+    const resumePath = join(__dirname, '../../frontend/public/Jharana Resume.pdf')
 
     if (!existsSync(resumePath)) {
       return res.status(404).json({
@@ -100,7 +100,7 @@ const downloadResume = (req, res) => {
     }
 
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', 'attachment; filename="YourName_Resume.pdf"')
+    res.setHeader('Content-Disposition', 'attachment; filename="Jharana_Adhikari_Resume.pdf"')
 
     res.sendFile(resumePath)
   } catch (error) {

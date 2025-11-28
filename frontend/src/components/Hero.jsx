@@ -15,15 +15,21 @@ export default function Hero() {
       id="hero"
       className="relative h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
+      {/* Background with Light/Dark Mode Support */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/hero-bg.jpg')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 dark:from-black/70 dark:via-black/50 dark:to-black/80" />
+        {/* Light mode: Clean white/gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-primary-50 dark:hidden" />
+
+        {/* Dark mode: Dark background with optional image */}
+        <div className="absolute inset-0 hidden dark:block">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/images/hero-bg.jpg')",
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+        </div>
       </div>
 
       {/* Animated Background Elements */}
@@ -67,7 +73,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.p
-            className="text-primary-400 font-mono text-sm sm:text-base mb-4 tracking-wider"
+            className="text-primary-600 dark:text-primary-400 font-mono text-sm sm:text-base mb-4 tracking-wider"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -77,7 +83,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold text-gray-900 dark:text-white mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -90,10 +96,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-light mb-8">
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-300 font-light mb-8">
             Full Stack & AI Engineer
           </p>
-          <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
             Building scalable web and AI solutions with 3+ years of experience.
             Specialized in Python, React, FastAPI, and Machine Learning integration.
           </p>
@@ -113,7 +119,7 @@ export default function Hero() {
           </button>
           <a
             href="#contact"
-            className="btn-secondary border-white/30 text-white hover:border-white hover:text-white"
+            className="btn-secondary"
           >
             Get In Touch
           </a>
@@ -130,7 +136,7 @@ export default function Hero() {
         aria-label="Scroll to content"
       >
         <motion.div
-          className="flex flex-col items-center text-white/70 hover:text-white transition-colors"
+          className="flex flex-col items-center text-gray-500 dark:text-white/70 hover:text-gray-900 dark:hover:text-white transition-colors"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Bio from './components/Bio'
 import Skills from './components/Skills'
 import PortfolioGrid from './components/PortfolioGrid'
+import Achievements from './components/Achievements'
 import Testimonials from './components/Testimonials'
 import Resume from './components/Resume'
 import ContactForm from './components/ContactForm'
@@ -32,6 +33,7 @@ function App() {
         <Bio />
         <Skills />
         <PortfolioGrid />
+        <Achievements />
         <Testimonials />
         <Resume />
         <ContactForm />
