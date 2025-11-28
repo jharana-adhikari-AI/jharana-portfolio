@@ -107,9 +107,9 @@ export default function Bio() {
           </motion.div>
 
           {/* Profile Photo and Bio Text Side by Side */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column - Profile Photo */}
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div variants={itemVariants} className="space-y-8 lg:sticky lg:top-24">
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto">
                   <motion.div
@@ -156,8 +156,9 @@ export default function Bio() {
               </div>
             </motion.div>
 
-            {/* Right Column - Bio Text */}
-            <motion.div variants={itemVariants} className="space-y-6">
+            {/* Right Column - Bio Text + Tab Buttons + Experience/Education */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              {/* Bio Text */}
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <motion.p
                   className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
@@ -193,44 +194,39 @@ export default function Bio() {
                   building technology that makes a real impact on people's lives.
                 </motion.p>
               </div>
-            </motion.div>
-          </div>
 
-          {/* Tab Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center gap-4 mb-10"
-          >
-            <motion.button
-              onClick={() => setActiveTab('experience')}
-              className={`px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all ${
-                activeTab === 'experience'
-                  ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FiBriefcase className="w-5 h-5" />
-              Work Experience
-            </motion.button>
-            <motion.button
-              onClick={() => setActiveTab('education')}
-              className={`px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all ${
-                activeTab === 'education'
-                  ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FiBookOpen className="w-5 h-5" />
-              Education
-            </motion.button>
-          </motion.div>
+              {/* Tab Buttons */}
+              <div className="flex gap-4">
+                <motion.button
+                  onClick={() => setActiveTab('experience')}
+                  className={`px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all ${
+                    activeTab === 'experience'
+                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
+                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FiBriefcase className="w-5 h-5" />
+                  Work Experience
+                </motion.button>
+                <motion.button
+                  onClick={() => setActiveTab('education')}
+                  className={`px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all ${
+                    activeTab === 'education'
+                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
+                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FiBookOpen className="w-5 h-5" />
+                  Education
+                </motion.button>
+              </div>
 
-          {/* Content Area - 50% width centered */}
-          <div className="max-w-3xl mx-auto">
+              {/* Content Area */}
+              <div>
             <AnimatePresence mode="wait">
               {activeTab === 'experience' ? (
                 <motion.div
@@ -354,6 +350,8 @@ export default function Bio() {
               </motion.div>
               )}
             </AnimatePresence>
+              </div>
+            </motion.div>
           </div>
 
         </motion.div>
