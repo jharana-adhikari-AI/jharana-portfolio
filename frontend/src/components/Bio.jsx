@@ -90,7 +90,7 @@ export default function Bio() {
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full blur-2xl opacity-20" />
                   <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
                     <img
-                      src="/bio.png"
+                      src="/bio.jpg"
                       alt="Jharana Adhikari - Full Stack & AI Engineer"
                       className="w-full h-full object-cover"
                       loading="lazy"

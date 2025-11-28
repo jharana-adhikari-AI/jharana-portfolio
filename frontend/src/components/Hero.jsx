@@ -23,9 +23,11 @@ export default function Hero() {
         {/* Dark mode: Dark background with profile image */}
         <div className="absolute inset-0 hidden dark:block">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-no-repeat"
             style={{
               backgroundImage: "url('/profile.png')",
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center',
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
