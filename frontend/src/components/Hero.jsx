@@ -16,7 +16,7 @@ export default function Hero() {
       } else {
         clearInterval(timer)
       }
-    }, 100)
+    }, 200) // Slower - 200ms per letter
     return () => clearInterval(timer)
   }, [])
 
