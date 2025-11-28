@@ -21,10 +21,9 @@ export default function Hero() {
         <div className="absolute inset-0 dark:hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-primary-50" />
           <div
-            className="absolute inset-0 bg-no-repeat bg-center"
+            className="absolute inset-0 bg-no-repeat bg-center bg-cover md:bg-cover"
             style={{
               backgroundImage: "url('/profile.png')",
-              backgroundSize: 'auto',
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/80" />
@@ -33,10 +32,9 @@ export default function Hero() {
         {/* Dark mode: Dark background with profile image */}
         <div className="absolute inset-0 hidden dark:block">
           <div
-            className="absolute inset-0 bg-no-repeat bg-center"
+            className="absolute inset-0 bg-no-repeat bg-center bg-cover md:bg-cover"
             style={{
               backgroundImage: "url('/profile.png')",
-              backgroundSize: 'auto',
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
