@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {
@@ -10,22 +10,33 @@ import {
   FiMail,
   FiEye,
   FiX,
+  FiExternalLink,
 } from 'react-icons/fi'
 
 export default function Resume() {
   const [copied, setCopied] = useState(false)
   const [showShareMenu, setShowShareMenu] = useState(false)
   const [showPdfViewer, setShowPdfViewer] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   const shareUrl = typeof window !== 'undefined'
     ? `${window.location.origin}/api/resume/share`
     : ''
 
-  const resumeUrl = '/Jharana Resume.pdf'
+  const resumeUrl = '/Jharana_Resume.pdf'
 
   const handleCopyLink = async () => {
     try {
@@ -144,13 +155,36 @@ export default function Resume() {
                       <FiX className="w-5 h-5 text-gray-600 dark:text-gray-300" />
                     </button>
 
-                    {/* PDF Viewer */}
-                    <div className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-6">
-                      <iframe
-                        src={`${resumeUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
-                        className="w-full h-full border-0"
-                        title="Jharana Adhikari Resume"
-                      />
+                    {/* PDF Viewer - Desktop uses iframe, Mobile shows message */}
+                    <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-6">
+                      {isMobile ? (
+                        <div className="flex flex-col items-center justify-center h-full p-6 text-center">
+                          <div className="w-20 h-20 mb-4 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
+                            <FiExternalLink className="w-10 h-10 text-primary-600 dark:text-primary-400" />
+                          </div>
+                          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                            View Resume
+                          </h4>
+                          <p className="text-gray-600 dark:text-gray-400 mb-4">
+                            For the best viewing experience on mobile, open the PDF in a new tab or download it.
+                          </p>
+                          <a
+                            href={resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-primary"
+                          >
+                            <FiExternalLink className="w-5 h-5 mr-2" />
+                            Open PDF
+                          </a>
+                        </div>
+                      ) : (
+                        <iframe
+                          src={`${resumeUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
+                          className="w-full h-full border-0"
+                          title="Jharana Adhikari Resume"
+                        />
+                      )}
                     </div>
                   </motion.div>
                 )}
