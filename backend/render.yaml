@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: portfolio-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CORS_ORIGIN
+        sync: false
+      - key: EMAIL_SERVICE
+        value: sendgrid
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: BASE_URL
+        sync: false

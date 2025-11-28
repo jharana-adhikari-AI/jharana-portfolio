@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yourportfolio.com/sitemap.xml
+
+# Block access to admin or private areas if any
+Disallow: /api/
