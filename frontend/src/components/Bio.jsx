@@ -106,35 +106,95 @@ export default function Bio() {
             </h2>
           </motion.div>
 
-          {/* Bio Text - Moved Up */}
-          <motion.div
-            variants={itemVariants}
-            className="max-w-4xl mx-auto mb-12"
-          >
-            <div className="prose prose-lg dark:prose-invert max-w-none text-center">
-              <motion.p
-                className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 }}
-              >
-                I'm a Full Stack & AI Engineer with 3+ years of experience in developing
-                scalable web and AI solutions. My expertise spans Python, React, FastAPI,
-                Django, and PostgreSQL, with a strong background in AI/ML model integration
-                and cloud platforms like AWS and Azure.
-              </motion.p>
-              <motion.p
-                className="text-gray-600 dark:text-gray-300 leading-relaxed mt-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3 }}
-              >
-                Currently based in Toronto, I specialize in building data-driven systems
-                that enhance decision-making and automation. I'm a published researcher in AI mental health applications and a Kaggle
-                competition runner-up.
-              </motion.p>
-            </div>
-          </motion.div>
+          {/* Profile Photo and Bio Text Side by Side */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+            {/* Left Column - Profile Photo */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <div className="relative">
+                <div className="aspect-square max-w-md mx-auto">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full blur-2xl opacity-20"
+                    animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+                    <img
+                      src="/bio.jpg"
+                      alt="Jharana Adhikari - Full Stack & AI Engineer"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Badges */}
+              <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                {badges.map((badge, index) => (
+                  <motion.div
+                    key={badge.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+                    className="card p-4 text-center hover:shadow-xl transition-all"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <badge.icon className="w-8 h-8 mx-auto mb-2 text-primary-500" />
+                    </motion.div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
+                      {badge.label}
+                    </h4>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      {badge.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Column - Bio Text */}
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <motion.p
+                  className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 }}
+                >
+                  I'm a Full Stack & AI Engineer with 3+ years of experience in developing
+                  scalable web and AI solutions. My expertise spans Python, React, FastAPI,
+                  Django, and PostgreSQL, with a strong background in AI/ML model integration
+                  and cloud platforms like AWS and Azure.
+                </motion.p>
+                <motion.p
+                  className="text-gray-600 dark:text-gray-300 leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.4 }}
+                >
+                  Currently based in Toronto, I specialize in building data-driven systems
+                  that enhance decision-making and automation. From engineering AI-based
+                  automation systems for energy companies to developing NLP microservices
+                  processing 10,000+ documents, I'm passionate about solving complex problems
+                  with elegant solutions.
+                </motion.p>
+                <motion.p
+                  className="text-gray-600 dark:text-gray-300 leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6 }}
+                >
+                  I'm a published researcher in AI mental health applications and a Kaggle
+                  competition runner-up. I believe in continuous learning, clean code, and
+                  building technology that makes a real impact on people's lives.
+                </motion.p>
+              </div>
+            </motion.div>
+          </div>
 
           {/* Tab Buttons */}
           <motion.div
@@ -169,17 +229,18 @@ export default function Bio() {
             </motion.button>
           </motion.div>
 
-          {/* Content Area */}
-          <AnimatePresence mode="wait">
-            {activeTab === 'experience' ? (
-              <motion.div
-                key="experience"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-6"
-              >
+          {/* Content Area - 50% width centered */}
+          <div className="max-w-3xl mx-auto">
+            <AnimatePresence mode="wait">
+              {activeTab === 'experience' ? (
+                <motion.div
+                  key="experience"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.3 }}
+                  className="space-y-6"
+                >
                 {workExperience.map((job, index) => (
                   <motion.div
                     key={index}
@@ -291,37 +352,10 @@ export default function Bio() {
                   </motion.div>
                 ))}
               </motion.div>
-            )}
-          </AnimatePresence>
+              )}
+            </AnimatePresence>
+          </div>
 
-          {/* Badges Section */}
-          <motion.div variants={itemVariants} className="mt-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              {badges.map((badge, index) => (
-                <motion.div
-                  key={badge.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                  className="card p-4 text-center hover:shadow-xl transition-all"
-                  whileHover={{ y: -5, scale: 1.02 }}
-                >
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <badge.icon className="w-8 h-8 mx-auto mb-2 text-primary-500" />
-                  </motion.div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
-                    {badge.label}
-                  </h4>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {badge.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
