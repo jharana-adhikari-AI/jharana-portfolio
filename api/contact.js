@@ -23,10 +23,10 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    // Create transporter
+    // Create transporter - Gmail SMTP
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT),
+      host: 'smtp.gmail.com',
+      port: 587,
       secure: false,
       auth: {
         user: process.env.SMTP_USER,
