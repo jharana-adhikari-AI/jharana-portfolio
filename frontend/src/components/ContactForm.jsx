@@ -124,8 +124,23 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-white dark:bg-gray-950">
-      <div className="section-container">
+    <section id="contact" className="section-padding bg-gradient-to-b from-accent-100/50 to-accent-200/40 dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+      {/* Light mode decorative background */}
+      <div className="absolute inset-0 dark:hidden">
+        {/* Gradient orbs */}
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-bl from-primary-100 to-accent-50 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent-100 to-primary-50 rounded-full blur-3xl opacity-40 -translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-1/2 right-0 w-72 h-72 bg-gradient-to-l from-primary-50 to-transparent rounded-full blur-3xl opacity-30 translate-x-1/3" />
+        {/* Decorative elements */}
+        <div className="absolute top-24 left-16 w-3 h-3 bg-primary-300 rounded-full opacity-40" />
+        <div className="absolute top-40 right-24 w-4 h-4 bg-accent-300 rounded-full opacity-30" />
+        <div className="absolute bottom-40 left-1/3 w-2 h-2 bg-primary-400 rounded-full opacity-30" />
+        <div className="absolute bottom-24 right-1/3 w-6 h-6 border-2 border-primary-200 rounded-full opacity-30" />
+        {/* Subtle pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      </div>
+
+      <div className="section-container relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}

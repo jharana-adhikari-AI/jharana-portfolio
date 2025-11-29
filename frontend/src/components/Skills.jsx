@@ -7,30 +7,41 @@ const skillCategories = [
     name: 'Languages',
     skills: [
       { name: 'Python', level: 95 },
-      { name: 'JavaScript/TypeScript', level: 90 },
+      { name: 'JavaScript / TypeScript', level: 90 },
       { name: 'SQL', level: 88 },
       { name: 'Java', level: 75 },
       { name: 'C', level: 70 },
     ],
   },
   {
-    name: 'Frameworks',
+    name: 'Frameworks & Libraries',
     skills: [
-      { name: 'React', level: 92 },
+      { name: 'React (UI Library)', level: 92 },
+      { name: 'Node.js', level: 88 },
       { name: 'FastAPI', level: 95 },
       { name: 'Django', level: 90 },
-      { name: 'Node.js', level: 88 },
       { name: 'Flask', level: 85 },
     ],
   },
   {
-    name: 'AI/ML Tools',
+    name: 'AI / ML Tools',
     skills: [
       { name: 'TensorFlow', level: 88 },
       { name: 'PyTorch', level: 85 },
       { name: 'LangChain', level: 90 },
-      { name: 'spaCy/NLTK', level: 88 },
-      { name: 'Predictive Modeling', level: 85 },
+      { name: 'spaCy', level: 88 },
+      { name: 'NLP', level: 90 },
+      { name: 'OCR (Tesseract)', level: 85 },
+    ],
+  },
+  {
+    name: 'Databases',
+    skills: [
+      { name: 'PostgreSQL', level: 92 },
+      { name: 'MongoDB', level: 85 },
+      { name: 'MySQL', level: 88 },
+      { name: 'Oracle', level: 75 },
+      { name: 'Pinecone', level: 78 },
     ],
   },
   {
@@ -44,13 +55,13 @@ const skillCategories = [
     ],
   },
   {
-    name: 'Databases',
+    name: 'Other Tools',
     skills: [
-      { name: 'PostgreSQL', level: 92 },
-      { name: 'MySQL', level: 88 },
-      { name: 'MongoDB', level: 85 },
-      { name: 'Pinecone', level: 80 },
-      { name: 'Redis', level: 78 },
+      { name: 'Git', level: 92 },
+      { name: 'REST APIs', level: 95 },
+      { name: 'GraphQL', level: 80 },
+      { name: 'Microservices', level: 88 },
+      { name: 'Power BI', level: 78 },
     ],
   },
 ]
@@ -106,8 +117,19 @@ export default function Skills() {
   }
 
   return (
-    <section id="skills" className="section-padding bg-white dark:bg-gray-950">
-      <div className="section-container">
+    <section id="skills" className="section-padding bg-gradient-to-b from-accent-100/50 to-accent-200/40 dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+      {/* Light mode decorative background */}
+      <div className="absolute inset-0 dark:hidden">
+        {/* Gradient mesh background */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-primary-100 to-primary-50 rounded-full blur-3xl opacity-60 -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-accent-100 to-accent-50 rounded-full blur-3xl opacity-50 translate-x-1/3" />
+        <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-gradient-to-tr from-primary-50 to-accent-50 rounded-full blur-3xl opacity-40" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-tl from-primary-100 to-transparent rounded-full blur-2xl opacity-30" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      </div>
+
+      <div className="section-container relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -115,38 +137,35 @@ export default function Skills() {
           animate={inView ? 'visible' : 'hidden'}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-10">
             <span className="text-primary-600 dark:text-primary-400 font-mono text-sm tracking-wider uppercase">
               Expertise
             </span>
             <h2 className="heading-2 mt-2 text-gray-900 dark:text-white">
               Skills & Technologies
             </h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              A comprehensive toolkit built over 3+ years of professional experience,
-              spanning full-stack development, AI/ML engineering, and cloud platforms.
+            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto italic">
+              A versatile toolkit crafted over 3+ years, combining full-stack development, AI/ML engineering, and cloud expertise to deliver intelligent, production-ready solutions.
             </p>
           </motion.div>
 
-          {/* Tech Stack Chips */}
+          {/* Tech Stack Text with Dividers */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center gap-3 mb-16"
+            className="mb-8 w-full overflow-hidden"
           >
-            {techStack.map((tech, index) => (
-              <motion.span
-                key={tech}
-                className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium
-                           text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/30
-                           hover:text-primary-700 dark:hover:text-primary-300 transition-colors cursor-default"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.03 }}
-              >
-                {tech}
-              </motion.span>
-            ))}
+            <div className="flex flex-wrap justify-center items-center gap-x-1 gap-y-1 px-4">
+              {techStack.map((tech, index) => (
+                <span key={tech} className="inline-flex items-center">
+                  <span className="text-xs text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-default whitespace-nowrap">
+                    {tech}
+                  </span>
+                  {index < techStack.length - 1 && (
+                    <span className="mx-1.5 text-primary-400 dark:text-primary-500 text-xs">•</span>
+                  )}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* Category Tabs */}

@@ -12,7 +12,7 @@ const workExperience = [
     period: 'Aug 2025 – Present',
     highlights: [
       'Engineered an AI-based automation system integrating Zoho CRM and AWS that dynamically generates personalized energy reports for 500+ clients monthly.',
-      'Automated financial calculations for electricity savings, IRR, and rebate eligibility, improving cost estimation accuracy by 43% and reducing manual work time by 60%.',
+      'Automated financial calculations for electricity savings, IRR, and rebate eligibility, improving cost estimation accuracy by 90% and reducing manual work time by 60%.',
       'Developed real-time inspection analytics using FastAPI and React dashboards to visualize performance, anomalies, and test metrics.',
       'Linked Zoho APIs with PostgreSQL databases for secure, automated decision-making — increasing data synchronization speed by 70%.',
       'Applied AI algorithms and statistical models to analyze energy usage and compliance, enhancing operational efficiency and client engagement.',
@@ -45,13 +45,13 @@ const workExperience = [
 
 const education = [
   {
-    degree: 'PG Certificate – Artificial Intelligence & Machine Learning',
+    degree: 'Ontario Graduate Certificate – Artificial Intelligence & Machine Learning',
     institution: 'Lambton College, Toronto',
     period: 'Jan 2024 – Aug 2025',
     focus: 'Advanced AI/ML, Deep Learning, NLP, Computer Vision, and Data Science',
   },
   {
-    degree: 'BSc – Computer System Engineering',
+    degree: 'Bachelor of Science – Computer System Engineering',
     institution: 'University of Sunderland',
     period: 'Oct 2018 – Nov 2022',
     focus: 'Software Engineering, Algorithms, AI, and Data Analysis',
@@ -88,7 +88,7 @@ export default function Bio() {
   }
 
   return (
-    <section id="bio" className="section-padding bg-gray-50 dark:bg-gray-900">
+    <section id="bio" className="section-padding bg-gradient-to-b from-primary-100/60 to-primary-200/40 dark:from-gray-900 dark:to-gray-950">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -159,41 +159,28 @@ export default function Bio() {
             {/* Right Column - Bio Text + Tab Buttons + Experience/Education */}
             <motion.div variants={itemVariants} className="space-y-8">
               {/* Bio Text */}
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <motion.p
-                  className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.2 }}
-                >
-                  I'm a Full Stack & AI Engineer with 3+ years of experience in developing
-                  scalable web and AI solutions. My expertise spans Python, React, FastAPI,
-                  Django, and PostgreSQL, with a strong background in AI/ML model integration
-                  and cloud platforms like AWS and Azure.
-                </motion.p>
-                <motion.p
-                  className="text-gray-600 dark:text-gray-300 leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4 }}
-                >
-                  Currently based in Toronto, I specialize in building data-driven systems
-                  that enhance decision-making and automation. From engineering AI-based
-                  automation systems for energy companies to developing NLP microservices
-                  processing 10,000+ documents, I'm passionate about solving complex problems
-                  with elegant solutions.
-                </motion.p>
-                <motion.p
-                  className="text-gray-600 dark:text-gray-300 leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.6 }}
-                >
-                  I'm a published researcher in AI mental health applications and a Kaggle
-                  competition runner-up. I believe in continuous learning, clean code, and
-                  building technology that makes a real impact on people's lives.
-                </motion.p>
-              </div>
+              <motion.div
+                className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-800 dark:to-gray-800/50 border border-primary-100 dark:border-gray-700 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.2 }}
+                whileHover={{ scale: 1.01 }}
+              >
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-500/10 to-accent-500/10 rounded-full blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-accent-500/10 to-primary-500/10 rounded-full blur-2xl" />
+
+                {/* Quote mark */}
+                <div className="absolute top-4 left-4 text-6xl text-primary-300 dark:text-primary-700 opacity-50 font-serif leading-none">"</div>
+
+                <p className="relative text-gray-600 dark:text-gray-300 leading-relaxed text-base italic">
+                  I develop scalable software and AI-powered systems using Python, React, FastAPI, Node.js, and cloud technologies—building intelligent, data-driven solutions that enable automation and smarter decision-making.
+                </p>
+
+                <p className="relative mt-4 text-gray-600 dark:text-gray-300 leading-relaxed text-base italic">
+                  With 3+ years of experience, I specialize in LLM integration, RAG pipelines, vector databases, and modern microservice-based architectures to deliver production-ready AI applications from Toronto.
+                </p>
+              </motion.div>
 
               {/* Tab Buttons */}
               <div className="flex gap-4">
@@ -292,7 +279,7 @@ export default function Bio() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 + i * 0.05 }}
-                            className="flex items-start gap-3 text-gray-600 dark:text-gray-300"
+                            className="flex items-start gap-3 text-gray-600 dark:text-gray-300 text-base italic"
                           >
                             <span className="mt-2 w-2 h-2 bg-primary-500 rounded-full flex-shrink-0" />
                             <span>{highlight}</span>
