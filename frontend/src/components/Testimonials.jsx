@@ -244,7 +244,7 @@ export default function Testimonials() {
                       transformStyle: 'preserve-3d',
                     }}
                   >
-                    <div className={`card p-5 sm:p-6 md:p-8 overflow-hidden shadow-2xl transition-all duration-300 ${index === currentIndex ? 'ring-2 ring-primary-500 ring-offset-4 dark:ring-offset-gray-900 shadow-primary-500/20' : ''}`}>
+                    <div className={`card p-5 sm:p-6 md:p-8 overflow-hidden shadow-2xl transition-all duration-300 bg-gradient-to-b from-primary-100 to-primary-200 dark:from-gray-900 dark:to-gray-900 ${index === currentIndex ? 'ring-2 ring-primary-500 ring-offset-4 dark:ring-offset-gray-900 shadow-primary-500/20' : ''}`}>
                       {/* Large Quote Mark Background */}
                       <div className="absolute top-2 left-4 text-6xl text-primary-200 dark:text-primary-800/30 font-serif leading-none opacity-50">"</div>
 
@@ -329,7 +329,7 @@ export default function Testimonials() {
                 <button
                   onClick={prevSlide}
                   className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50
-                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             p-2 sm:p-3 rounded-full bg-transparent dark:bg-gray-800 shadow-xl
                              text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
                              hover:scale-110 active:scale-95 transition-all"
                   aria-label="Previous testimonial"
@@ -339,7 +339,7 @@ export default function Testimonials() {
                 <button
                   onClick={nextSlide}
                   className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50
-                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             p-2 sm:p-3 rounded-full bg-transparent dark:bg-gray-800 shadow-xl
                              text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
                              hover:scale-110 active:scale-95 transition-all"
                   aria-label="Next testimonial"

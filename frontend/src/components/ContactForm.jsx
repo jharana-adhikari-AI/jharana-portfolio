@@ -264,7 +264,7 @@ export default function ContactForm() {
                         errors.name
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
-                      } bg-white dark:bg-gray-800 text-gray-900 dark:text-white
+                      } bg-transparent dark:bg-gray-800 text-gray-900 dark:text-white
                       focus:outline-none focus:ring-2 transition-colors`}
                       placeholder="Your name"
                     />
@@ -294,7 +294,7 @@ export default function ContactForm() {
                         errors.email
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
-                      } bg-white dark:bg-gray-800 text-gray-900 dark:text-white
+                      } bg-transparent dark:bg-gray-800 text-gray-900 dark:text-white
                       focus:outline-none focus:ring-2 transition-colors`}
                       placeholder="your@email.com"
                     />
@@ -324,7 +324,7 @@ export default function ContactForm() {
                         errors.subject
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
-                      } bg-white dark:bg-gray-800 text-gray-900 dark:text-white
+                      } bg-transparent dark:bg-gray-800 text-gray-900 dark:text-white
                       focus:outline-none focus:ring-2 transition-colors`}
                       placeholder="Project inquiry / Job opportunity / Collaboration"
                     />
@@ -354,7 +354,7 @@ export default function ContactForm() {
                         errors.message
                           ? 'border-red-500 focus:ring-red-500'
                           : 'border-gray-300 dark:border-gray-600 focus:ring-primary-500'
-                      } bg-white dark:bg-gray-800 text-gray-900 dark:text-white
+                      } bg-transparent dark:bg-gray-800 text-gray-900 dark:text-white
                       focus:outline-none focus:ring-2 transition-colors resize-none`}
                       placeholder="Tell me about your project or opportunity..."
                     />

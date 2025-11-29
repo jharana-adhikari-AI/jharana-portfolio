@@ -88,8 +88,242 @@ export default function Bio() {
   }
 
   return (
-    <section id="bio" className="section-padding bg-gradient-to-b from-primary-100/60 to-primary-200/40 dark:from-gray-900 dark:to-gray-950">
-      <div className="section-container">
+    <section id="bio" className="section-padding bg-gradient-to-b from-primary-100/60 to-primary-200/40 dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+      {/* Animated Background Elements - Neural Network Theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Neural network connection lines */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.04] dark:opacity-[0.03]">
+          <motion.line
+            x1="10%" y1="20%" x2="30%" y2="40%"
+            stroke="#6366f1" strokeWidth="1"
+            animate={{ opacity: [0.3, 0.8, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.line
+            x1="30%" y1="40%" x2="50%" y2="25%"
+            stroke="#8b5cf6" strokeWidth="1"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+          />
+          <motion.line
+            x1="50%" y1="25%" x2="75%" y2="45%"
+            stroke="#6366f1" strokeWidth="1"
+            animate={{ opacity: [0.4, 0.9, 0.4] }}
+            transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
+          />
+          <motion.line
+            x1="75%" y1="45%" x2="90%" y2="30%"
+            stroke="#8b5cf6" strokeWidth="1"
+            animate={{ opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 4.5, repeat: Infinity, delay: 0.8 }}
+          />
+          <motion.line
+            x1="20%" y1="70%" x2="45%" y2="80%"
+            stroke="#6366f1" strokeWidth="1"
+            animate={{ opacity: [0.4, 0.8, 0.4] }}
+            transition={{ duration: 3, repeat: Infinity, delay: 1.2 }}
+          />
+          <motion.line
+            x1="45%" y1="80%" x2="70%" y2="65%"
+            stroke="#8b5cf6" strokeWidth="1"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 3.5, repeat: Infinity, delay: 0.3 }}
+          />
+        </svg>
+
+        {/* Neural network nodes - Many dots scattered across */}
+        {/* Top row */}
+        <motion.div
+          className="absolute top-[8%] left-[5%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-[12%] left-[15%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: 0.3 }}
+        />
+        <motion.div
+          className="absolute top-[6%] left-[28%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/20 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity, delay: 0.6 }}
+        />
+        <motion.div
+          className="absolute top-[15%] left-[42%] w-2.5 h-2.5 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.35, 0.65, 0.35] }}
+          transition={{ duration: 2.2, repeat: Infinity, delay: 0.9 }}
+        />
+        <motion.div
+          className="absolute top-[10%] right-[35%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 2.8, repeat: Infinity, delay: 1.2 }}
+        />
+        <motion.div
+          className="absolute top-[8%] right-[20%] w-3 h-3 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.4, repeat: Infinity, delay: 0.4 }}
+        />
+        <motion.div
+          className="absolute top-[14%] right-[8%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 3.2, repeat: Infinity, delay: 0.7 }}
+        />
+
+        {/* Upper middle row */}
+        <motion.div
+          className="absolute top-[25%] left-[8%] w-2.5 h-2.5 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.35, 0.65, 0.35] }}
+          transition={{ duration: 2.3, repeat: Infinity, delay: 0.2 }}
+        />
+        <motion.div
+          className="absolute top-[30%] left-[22%] w-3 h-3 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.75, 0.4] }}
+          transition={{ duration: 2.6, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[22%] left-[38%] w-2 h-2 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 2.1, repeat: Infinity, delay: 0.8 }}
+        />
+        <motion.div
+          className="absolute top-[28%] right-[40%] w-2.5 h-2.5 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 2.9, repeat: Infinity, delay: 1.1 }}
+        />
+        <motion.div
+          className="absolute top-[24%] right-[25%] w-2 h-2 bg-accent-500/40 dark:bg-accent-400/25 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.4, repeat: Infinity, delay: 0.3 }}
+        />
+        <motion.div
+          className="absolute top-[32%] right-[12%] w-3 h-3 bg-primary-500/30 dark:bg-primary-400/20 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 3.1, repeat: Infinity, delay: 0.6 }}
+        />
+
+        {/* Middle row */}
+        <motion.div
+          className="absolute top-[45%] left-[3%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 2.7, repeat: Infinity, delay: 0.4 }}
+        />
+        <motion.div
+          className="absolute top-[50%] left-[18%] w-2.5 h-2.5 bg-accent-500/40 dark:bg-accent-400/25 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.2, repeat: Infinity, delay: 0.7 }}
+        />
+        <motion.div
+          className="absolute top-[42%] left-[32%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/18 rounded-full"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-[48%] right-[32%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.35, 0.65, 0.35] }}
+          transition={{ duration: 2.8, repeat: Infinity, delay: 0.2 }}
+        />
+        <motion.div
+          className="absolute top-[52%] right-[18%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[46%] right-[5%] w-2.5 h-2.5 bg-accent-500/30 dark:bg-accent-400/20 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 2.3, repeat: Infinity, delay: 0.8 }}
+        />
+
+        {/* Lower middle row */}
+        <motion.div
+          className="absolute top-[62%] left-[6%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.35, 0.65, 0.35] }}
+          transition={{ duration: 2.6, repeat: Infinity, delay: 0.1 }}
+        />
+        <motion.div
+          className="absolute top-[68%] left-[20%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.1, repeat: Infinity, delay: 0.4 }}
+        />
+        <motion.div
+          className="absolute top-[65%] left-[35%] w-2.5 h-2.5 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 2.9, repeat: Infinity, delay: 0.7 }}
+        />
+        <motion.div
+          className="absolute top-[70%] right-[38%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 2.4, repeat: Infinity, delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-[64%] right-[22%] w-3 h-3 bg-accent-500/40 dark:bg-accent-400/25 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.75, 0.4] }}
+          transition={{ duration: 2.7, repeat: Infinity, delay: 0.3 }}
+        />
+        <motion.div
+          className="absolute top-[72%] right-[10%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/20 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 3.2, repeat: Infinity, delay: 0.6 }}
+        />
+
+        {/* Bottom row */}
+        <motion.div
+          className="absolute top-[82%] left-[4%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: 0.2 }}
+        />
+        <motion.div
+          className="absolute top-[88%] left-[16%] w-2.5 h-2.5 bg-accent-500/40 dark:bg-accent-400/25 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.2, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[85%] left-[30%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/18 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 2.8, repeat: Infinity, delay: 0.8 }}
+        />
+        <motion.div
+          className="absolute top-[90%] left-[45%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.35, 0.65, 0.35] }}
+          transition={{ duration: 2.1, repeat: Infinity, delay: 1.1 }}
+        />
+        <motion.div
+          className="absolute top-[84%] right-[30%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.6, repeat: Infinity, delay: 0.4 }}
+        />
+        <motion.div
+          className="absolute top-[92%] right-[18%] w-2.5 h-2.5 bg-accent-500/30 dark:bg-accent-400/20 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.55, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity, delay: 0.7 }}
+        />
+        <motion.div
+          className="absolute top-[86%] right-[6%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.35, 0.6, 0.35] }}
+          transition={{ duration: 2.3, repeat: Infinity, delay: 1 }}
+        />
+
+        {/* Floating hexagons - data structure theme */}
+        <motion.div
+          className="absolute top-20 right-20 w-16 h-16"
+          animate={{ rotate: 360, y: [0, -10, 0] }}
+          transition={{ rotate: { duration: 20, repeat: Infinity, ease: 'linear' }, y: { duration: 4, repeat: Infinity } }}
+        >
+          <svg viewBox="0 0 100 100" className="w-full h-full opacity-20 dark:opacity-10">
+            <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="#6366f1" strokeWidth="2" />
+          </svg>
+        </motion.div>
+        <motion.div
+          className="absolute bottom-32 left-16 w-12 h-12"
+          animate={{ rotate: -360, y: [0, 8, 0] }}
+          transition={{ rotate: { duration: 15, repeat: Infinity, ease: 'linear' }, y: { duration: 3.5, repeat: Infinity } }}
+        >
+          <svg viewBox="0 0 100 100" className="w-full h-full opacity-15 dark:opacity-10">
+            <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" fill="none" stroke="#8b5cf6" strokeWidth="2" />
+          </svg>
+        </motion.div>
+      </div>
+
+      <div className="section-container relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -199,7 +433,7 @@ export default function Bio() {
                   className={`px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all ${
                     activeTab === 'experience'
                       ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow'
+                      : 'bg-transparent dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 border border-purple-800 dark:border-purple-500'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -212,7 +446,7 @@ export default function Bio() {
                   className={`px-6 py-3 rounded-xl font-medium flex items-center gap-2 transition-all ${
                     activeTab === 'education'
                       ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 shadow'
+                      : 'bg-transparent dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 border border-purple-800 dark:border-purple-500'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}

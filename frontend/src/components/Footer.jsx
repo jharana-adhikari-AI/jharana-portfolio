@@ -42,8 +42,88 @@ export default function Footer() {
         <div className="absolute top-0 right-1/3 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl -translate-x-1/4" />
         <div className="absolute top-1/2 right-0 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl translate-x-1/4" />
-        {/* Subtle pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      </div>
+
+      {/* Animated Background Elements - Cloud/Connection Theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Cloud icons */}
+        <motion.div
+          className="absolute top-[15%] left-[10%] opacity-15 dark:opacity-10"
+          animate={{ y: [0, -8, 0], x: [0, 5, 0] }}
+          transition={{ duration: 5, repeat: Infinity }}
+        >
+          <svg width="48" height="32" viewBox="0 0 48 32" fill="none">
+            <path d="M38 28H14C8 28 4 24 4 18C4 12 8 8 14 8C14 4 18 0 24 0C30 0 34 4 34 8H38C42 8 46 12 46 18C46 24 42 28 38 28Z" stroke="#6366f1" strokeWidth="2" fill="none" />
+          </svg>
+        </motion.div>
+        <motion.div
+          className="absolute bottom-[30%] right-[12%] opacity-10 dark:opacity-[0.06]"
+          animate={{ y: [0, 10, 0], x: [0, -5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 1 }}
+        >
+          <svg width="40" height="28" viewBox="0 0 48 32" fill="none">
+            <path d="M38 28H14C8 28 4 24 4 18C4 12 8 8 14 8C14 4 18 0 24 0C30 0 34 4 34 8H38C42 8 46 12 46 18C46 24 42 28 38 28Z" stroke="#8b5cf6" strokeWidth="2" fill="none" />
+          </svg>
+        </motion.div>
+
+        {/* Connection links */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.04] dark:opacity-[0.03]">
+          <motion.line
+            x1="15%" y1="30%" x2="35%" y2="50%"
+            stroke="#6366f1" strokeWidth="1"
+            animate={{ opacity: [0.2, 0.6, 0.2] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.line
+            x1="35%" y1="50%" x2="55%" y2="35%"
+            stroke="#8b5cf6" strokeWidth="1"
+            animate={{ opacity: [0.3, 0.7, 0.3] }}
+            transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+          />
+          <motion.line
+            x1="55%" y1="35%" x2="75%" y2="55%"
+            stroke="#6366f1" strokeWidth="1"
+            animate={{ opacity: [0.2, 0.5, 0.2] }}
+            transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
+          />
+          <motion.line
+            x1="75%" y1="55%" x2="90%" y2="40%"
+            stroke="#8b5cf6" strokeWidth="1"
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 4.5, repeat: Infinity, delay: 0.8 }}
+          />
+        </svg>
+
+        {/* Connection nodes */}
+        <motion.div
+          className="absolute top-[30%] left-[15%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/15 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-[50%] left-[35%] w-3 h-3 bg-accent-500/30 dark:bg-accent-400/15 rounded-full"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[35%] right-[45%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/15 rounded-full"
+          animate={{ scale: [1, 1.6, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 2.2, repeat: Infinity, delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-[55%] right-[25%] w-3 h-3 bg-accent-500/30 dark:bg-accent-400/15 rounded-full"
+          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 2.8, repeat: Infinity, delay: 0.8 }}
+        />
+
+        {/* @ symbol for contact */}
+        <motion.div
+          className="absolute top-[40%] right-[15%] text-3xl text-primary-300/10 dark:text-primary-500/[0.06] font-mono"
+          animate={{ rotate: [0, 10, 0], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          @
+        </motion.div>
       </div>
 
       <div className="section-container relative z-10">
@@ -101,7 +181,7 @@ export default function Footer() {
                     href={social.href}
                     target={social.href.startsWith('http') ? '_blank' : undefined}
                     rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center
+                    className="w-10 h-10 rounded-xl bg-transparent dark:bg-gray-800 flex items-center justify-center
                                text-gray-600 dark:text-gray-400 hover:bg-primary-600 hover:text-white
                                dark:hover:bg-primary-600 transition-all shadow-md"
                     aria-label={social.label}

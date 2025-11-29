@@ -77,7 +77,7 @@ function SkillBar({ skill, inView }) {
           {skill.level}%
         </span>
       </div>
-      <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="h-2 bg-gray-400 dark:bg-gray-700 rounded-full overflow-hidden">
         <motion.div
           className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"
           initial={{ width: 0 }}
@@ -118,8 +118,122 @@ export default function Skills() {
         <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-accent-100 to-accent-50 rounded-full blur-3xl opacity-50 translate-x-1/3" />
         <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-gradient-to-tr from-primary-50 to-accent-50 rounded-full blur-3xl opacity-40" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-tl from-primary-100 to-transparent rounded-full blur-2xl opacity-30" />
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      </div>
+
+      {/* Animated Background Elements - Floating Dots */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Top row */}
+        <motion.div
+          className="absolute top-[8%] left-[5%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-[12%] left-[15%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[6%] left-[28%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/20 rounded-full"
+          animate={{ y: [0, -12, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-[10%] right-[35%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 3.5, repeat: Infinity, delay: 0.8 }}
+        />
+        <motion.div
+          className="absolute top-[8%] right-[20%] w-3 h-3 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ y: [0, -8, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 5.5, repeat: Infinity, delay: 0.3 }}
+        />
+        <motion.div
+          className="absolute top-[14%] right-[8%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, 12, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4, repeat: Infinity, delay: 1.2 }}
+        />
+
+        {/* Middle row */}
+        <motion.div
+          className="absolute top-[35%] left-[3%] w-2 h-2 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.8, repeat: Infinity, delay: 0.6 }}
+        />
+        <motion.div
+          className="absolute top-[42%] left-[18%] w-3 h-3 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1.5 }}
+        />
+        <motion.div
+          className="absolute top-[38%] left-[32%] w-2 h-2 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ y: [0, -8, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4.2, repeat: Infinity, delay: 0.4 }}
+        />
+        <motion.div
+          className="absolute top-[45%] right-[28%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 5.2, repeat: Infinity, delay: 0.9 }}
+        />
+        <motion.div
+          className="absolute top-[40%] right-[15%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ y: [0, -12, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 1.3 }}
+        />
+        <motion.div
+          className="absolute top-[48%] right-[5%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 3.8, repeat: Infinity, delay: 0.7 }}
+        />
+
+        {/* Bottom row */}
+        <motion.div
+          className="absolute top-[65%] left-[6%] w-3 h-3 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.8, repeat: Infinity, delay: 1.1 }}
+        />
+        <motion.div
+          className="absolute top-[72%] left-[20%] w-2 h-2 bg-accent-500/40 dark:bg-accent-400/25 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 5.5, repeat: Infinity, delay: 0.2 }}
+        />
+        <motion.div
+          className="absolute top-[68%] left-[35%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/18 rounded-full"
+          animate={{ y: [0, -8, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, delay: 0.8 }}
+        />
+        <motion.div
+          className="absolute top-[70%] right-[32%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ y: [0, 12, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1.4 }}
+        />
+        <motion.div
+          className="absolute top-[75%] right-[18%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[78%] right-[6%] w-2 h-2 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 5.2, repeat: Infinity, delay: 1 }}
+        />
+
+        {/* Extra scattered */}
+        <motion.div
+          className="absolute top-[88%] left-[12%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, -6, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.2, repeat: Infinity, delay: 0.6 }}
+        />
+        <motion.div
+          className="absolute top-[85%] left-[45%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1.2 }}
+        />
+        <motion.div
+          className="absolute top-[90%] right-[25%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, -8, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4.8, repeat: Infinity, delay: 0.3 }}
+        />
       </div>
 
       <div className="section-container relative z-10">

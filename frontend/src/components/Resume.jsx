@@ -75,6 +75,102 @@ export default function Resume() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
       </div>
 
+      {/* Animated Background Elements - Floating Dots */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Top row */}
+        <motion.div
+          className="absolute top-[8%] left-[5%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute top-[12%] left-[15%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[6%] left-[28%] w-2 h-2 bg-primary-500/30 dark:bg-primary-400/20 rounded-full"
+          animate={{ y: [0, -12, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 1 }}
+        />
+        <motion.div
+          className="absolute top-[10%] right-[35%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 3.5, repeat: Infinity, delay: 0.8 }}
+        />
+        <motion.div
+          className="absolute top-[8%] right-[20%] w-3 h-3 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ y: [0, -8, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 5.5, repeat: Infinity, delay: 0.3 }}
+        />
+        <motion.div
+          className="absolute top-[14%] right-[8%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, 12, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4, repeat: Infinity, delay: 1.2 }}
+        />
+
+        {/* Middle row */}
+        <motion.div
+          className="absolute top-[35%] left-[3%] w-2 h-2 bg-accent-500/35 dark:bg-accent-400/22 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.8, repeat: Infinity, delay: 0.6 }}
+        />
+        <motion.div
+          className="absolute top-[42%] left-[18%] w-3 h-3 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1.5 }}
+        />
+        <motion.div
+          className="absolute top-[40%] right-[15%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ y: [0, -12, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 1.3 }}
+        />
+        <motion.div
+          className="absolute top-[48%] right-[5%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 3.8, repeat: Infinity, delay: 0.7 }}
+        />
+
+        {/* Bottom row */}
+        <motion.div
+          className="absolute top-[65%] left-[6%] w-3 h-3 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.8, repeat: Infinity, delay: 1.1 }}
+        />
+        <motion.div
+          className="absolute top-[72%] left-[20%] w-2 h-2 bg-accent-500/40 dark:bg-accent-400/25 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 5.5, repeat: Infinity, delay: 0.2 }}
+        />
+        <motion.div
+          className="absolute top-[75%] right-[18%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, -10, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4.5, repeat: Infinity, delay: 0.5 }}
+        />
+        <motion.div
+          className="absolute top-[78%] right-[6%] w-2 h-2 bg-accent-500/30 dark:bg-accent-400/18 rounded-full"
+          animate={{ y: [0, 8, 0], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 5.2, repeat: Infinity, delay: 1 }}
+        />
+
+        {/* Extra scattered */}
+        <motion.div
+          className="absolute top-[88%] left-[12%] w-2 h-2 bg-primary-500/35 dark:bg-primary-400/22 rounded-full"
+          animate={{ y: [0, -6, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4.2, repeat: Infinity, delay: 0.6 }}
+        />
+        <motion.div
+          className="absolute top-[85%] left-[45%] w-3 h-3 bg-accent-500/35 dark:bg-accent-400/20 rounded-full"
+          animate={{ y: [0, 10, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 5, repeat: Infinity, delay: 1.2 }}
+        />
+        <motion.div
+          className="absolute top-[90%] right-[25%] w-2 h-2 bg-primary-500/40 dark:bg-primary-400/25 rounded-full"
+          animate={{ y: [0, -8, 0], opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4.8, repeat: Infinity, delay: 0.3 }}
+        />
+      </div>
+
       <div className="section-container relative z-10">
         <motion.div
           ref={ref}
@@ -145,7 +241,7 @@ export default function Resume() {
                       <motion.a
                         href={resumeUrl}
                         download="Jharana_Adhikari_Resume.pdf"
-                        className="btn-secondary flex-1 justify-center"
+                        className="flex-1 justify-center inline-flex items-center px-6 py-3 rounded-xl font-medium bg-transparent dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 border border-purple-800 dark:border-purple-500 transition-all"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -156,7 +252,7 @@ export default function Resume() {
                       <div className="relative flex-1">
                         <motion.button
                           onClick={() => setShowShareMenu(!showShareMenu)}
-                          className="btn-secondary w-full justify-center"
+                          className="w-full justify-center inline-flex items-center px-6 py-3 rounded-xl font-medium bg-transparent dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 border border-purple-800 dark:border-purple-500 transition-all"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
@@ -171,7 +267,7 @@ export default function Resume() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 10 }}
-                              className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-20"
+                              className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-transparent dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-20"
                             >
                               <button
                                 onClick={handleCopyLink}
@@ -222,13 +318,13 @@ export default function Resume() {
                     {/* Close Button */}
                     <button
                       onClick={() => setShowPdfViewer(false)}
-                      className="absolute -top-2 -right-2 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className="absolute -top-2 -right-2 z-10 p-2 bg-transparent dark:bg-gray-800 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     >
                       <FiX className="w-5 h-5 text-gray-600 dark:text-gray-300" />
                     </button>
 
                     {/* PDF Viewer */}
-                    <div className="relative w-full h-[450px] sm:h-[550px] md:h-[650px] bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+                    <div className="relative w-full h-[450px] sm:h-[550px] md:h-[650px] bg-transparent dark:bg-gray-800 rounded-lg overflow-hidden">
                       {isMobile ? (
                         <div className="flex flex-col items-center justify-center h-full p-6 text-center">
                           <FiExternalLink className="w-12 h-12 text-primary-500 mb-4" />

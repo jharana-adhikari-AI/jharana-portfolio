@@ -144,11 +144,8 @@ export default function Achievements() {
         {/* Gradient orbs */}
         <div className="absolute top-1/4 right-0 w-80 h-80 bg-gradient-to-bl from-accent-100 to-primary-50 rounded-full blur-3xl opacity-50 translate-x-1/3" />
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-gradient-to-tr from-primary-100 to-accent-50 rounded-full blur-3xl opacity-40 translate-y-1/3" />
-        {/* Decorative shapes */}
-        <div className="absolute top-20 left-10 w-20 h-20 border-2 border-primary-200 rounded-full opacity-30" />
-        <div className="absolute bottom-32 right-20 w-16 h-16 border-2 border-accent-200 rounded-lg rotate-45 opacity-30" />
-        <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-primary-200 rounded-full opacity-20" />
       </div>
+
 
       <div className="section-container relative z-10">
         <motion.div
@@ -214,7 +211,7 @@ export default function Achievements() {
                       transformStyle: 'preserve-3d',
                     }}
                   >
-                    <div className={`card p-6 sm:p-8 overflow-hidden shadow-2xl transition-shadow duration-300 ${index === currentIndex ? 'ring-2 ring-primary-500 ring-offset-4 dark:ring-offset-gray-900' : ''}`}>
+                    <div className={`card p-6 sm:p-8 overflow-hidden shadow-2xl transition-shadow duration-300 bg-gradient-to-b from-accent-100 to-accent-200 dark:from-gray-900 dark:to-gray-900 ${index === currentIndex ? 'ring-2 ring-primary-500 ring-offset-4 dark:ring-offset-gray-900' : ''}`}>
                       {/* Icon */}
                       <div className="flex justify-center mb-4">
                         <motion.div
@@ -266,7 +263,7 @@ export default function Achievements() {
                 <button
                   onClick={prevSlide}
                   className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40
-                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             p-2 sm:p-3 rounded-full bg-transparent dark:bg-gray-800 shadow-xl
                              text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
                              hover:scale-110 active:scale-95 transition-all"
                   aria-label="Previous achievement"
@@ -276,7 +273,7 @@ export default function Achievements() {
                 <button
                   onClick={nextSlide}
                   className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40
-                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             p-2 sm:p-3 rounded-full bg-transparent dark:bg-gray-800 shadow-xl
                              text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
                              hover:scale-110 active:scale-95 transition-all"
                   aria-label="Next achievement"
