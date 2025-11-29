@@ -63,8 +63,7 @@ export default function Footer() {
                 <span className="text-gradient">JA</span><span className="text-primary-500">.</span>
               </a>
               <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs italic">
-                Full Stack & AI Engineer building scalable web and AI solutions
-                with expertise in Python, React, FastAPI, and Machine Learning.
+                Full Stack Software Developer & AI Engineer with 3+ years of experience in building scalable softwares, web applications and AI solutions.
               </p>
             </motion.div>
 

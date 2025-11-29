@@ -104,10 +104,10 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-16">
           {/* Floating Circular Profile Image - Rise from bottom slowly */}
           <motion.div
-            className="relative flex-shrink-0"
+            className="relative flex-shrink-0 order-first"
             initial={{ opacity: 0, y: 200 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 2, delay: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
           >
             {/* Floating animation wrapper */}
             <motion.div
@@ -149,20 +149,20 @@ export default function Hero() {
 
           {/* Text Content - with floating animation */}
           <motion.div
-            className="text-center lg:text-left"
+            className="text-center lg:text-left order-last"
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
           >
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
             >
               <motion.p
                 className="text-primary-600 dark:text-primary-400 font-mono text-base sm:text-lg mb-4 tracking-wider font-bold"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
+                transition={{ duration: 0.6, delay: 1.7 }}
               >
                 Hello, I'm
               </motion.p>
@@ -172,7 +172,7 @@ export default function Hero() {
               className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 tracking-wider"
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, type: 'spring', stiffness: 80 }}
+              transition={{ duration: 0.8, delay: 1.8, type: 'spring', stiffness: 80 }}
             >
               <span className="block">
                 {displayedText}
@@ -187,7 +187,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7, type: 'spring', stiffness: 80 }}
+              transition={{ duration: 0.8, delay: 2.0, type: 'spring', stiffness: 80 }}
             >
               <p className="text-base xs:text-lg sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-300 font-medium mb-6">
                 Full Stack Software Developer & AI Engineer
@@ -198,7 +198,7 @@ export default function Hero() {
               className="mt-6 sm:mt-8 flex flex-row justify-center lg:justify-start gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
+              transition={{ duration: 0.6, delay: 2.2 }}
             >
               <motion.button
                 onClick={scrollToSection}

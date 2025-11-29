@@ -66,13 +66,6 @@ const skillCategories = [
   },
 ]
 
-const techStack = [
-  'Python', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'FastAPI', 'Django',
-  'Flask', 'PostgreSQL', 'MongoDB', 'AWS', 'Azure', 'Docker', 'Kubernetes',
-  'TensorFlow', 'PyTorch', 'LangChain', 'spaCy', 'NLP', 'OCR', 'Tesseract',
-  'Git', 'CI/CD', 'REST APIs', 'GraphQL', 'Microservices', 'Power BI',
-]
-
 function SkillBar({ skill, inView }) {
   return (
     <div className="space-y-2">
@@ -149,25 +142,6 @@ export default function Skills() {
             </p>
           </motion.div>
 
-          {/* Tech Stack Text with Dividers */}
-          <motion.div
-            variants={itemVariants}
-            className="mb-8 w-full overflow-hidden"
-          >
-            <div className="flex flex-wrap justify-center items-center gap-x-1 gap-y-1 px-4">
-              {techStack.map((tech, index) => (
-                <span key={tech} className="inline-flex items-center">
-                  <span className="text-xs text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-default whitespace-nowrap">
-                    {tech}
-                  </span>
-                  {index < techStack.length - 1 && (
-                    <span className="mx-1.5 text-primary-400 dark:text-primary-500 text-xs">•</span>
-                  )}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Category Tabs */}
           <motion.div
             variants={itemVariants}
@@ -180,7 +154,7 @@ export default function Skills() {
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   activeCategory === index
                     ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                    : 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 border border-purple-800 dark:border-blue-500/30 shadow-[0_0_10px_rgba(88,28,135,0.4)] dark:shadow-[0_0_10px_rgba(59,130,246,0.3)]'
+                    : 'bg-purple-50 dark:bg-purple-900/20 text-purple-800 dark:text-purple-400 hover:bg-purple-100 dark:hover:bg-purple-900/30 border border-purple-800 dark:border-purple-500/30 shadow-[0_0_10px_rgba(88,28,135,0.4)] dark:shadow-[0_0_10px_rgba(147,51,234,0.3)]'
                 }`}
               >
                 {category.name}

@@ -338,7 +338,7 @@ export default function Bio() {
                         {edu.institution}
                       </p>
 
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-gray-500 dark:text-gray-400 italic">
                         <span className="font-medium">Focus:</span> {edu.focus}
                       </p>
                     </div>

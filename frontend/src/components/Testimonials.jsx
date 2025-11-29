@@ -293,7 +293,7 @@ export default function Testimonials() {
                       )}
 
                       {/* Testimonial Quote */}
-                      <blockquote className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 italic relative z-10 line-clamp-4 sm:line-clamp-5">
+                      <blockquote className="text-center text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 italic relative z-10">
                         "{testimonial.testimonial}"
                       </blockquote>
 

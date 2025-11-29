@@ -3,20 +3,21 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import {
   FiDownload,
+  FiEye,
+  FiX,
+  FiExternalLink,
+  FiFileText,
   FiShare2,
   FiCopy,
   FiCheck,
   FiLinkedin,
   FiMail,
-  FiEye,
-  FiX,
-  FiExternalLink,
 } from 'react-icons/fi'
 
 export default function Resume() {
-  const [copied, setCopied] = useState(false)
-  const [showShareMenu, setShowShareMenu] = useState(false)
   const [showPdfViewer, setShowPdfViewer] = useState(false)
+  const [showShareMenu, setShowShareMenu] = useState(false)
+  const [copied, setCopied] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -32,23 +33,18 @@ export default function Resume() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  const resumeUrl = '/Jharana_Resume.pdf'
   const shareUrl = typeof window !== 'undefined'
     ? `${window.location.origin}/api/resume/share`
     : ''
 
-  const resumeUrl = '/Jharana_Resume.pdf'
-
   const handleCopyLink = async () => {
     try {
-      const response = await fetch('/api/resume/share-link')
-      const data = await response.json()
-      await navigator.clipboard.writeText(data.shareUrl || shareUrl)
+      await navigator.clipboard.writeText(window.location.origin)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
-      await navigator.clipboard.writeText(shareUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      console.error('Failed to copy')
     }
   }
 
@@ -57,13 +53,11 @@ export default function Resume() {
       name: 'LinkedIn',
       icon: FiLinkedin,
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-      color: 'hover:bg-blue-600 hover:text-white',
     },
     {
       name: 'Email',
       icon: FiMail,
-      href: `mailto:?subject=Check out Jharana Adhikari's Resume&body=I thought you might be interested in this portfolio: ${encodeURIComponent(shareUrl)}`,
-      color: 'hover:bg-red-500 hover:text-white',
+      href: `mailto:?subject=Check out Jharana Adhikari's Resume&body=I thought you might be interested: ${encodeURIComponent(shareUrl)}`,
     },
   ]
 
@@ -79,7 +73,6 @@ export default function Resume() {
       <div className="absolute inset-0 hidden dark:block">
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 right-0 w-64 h-64 bg-fuchsia-600/5 rounded-full blur-3xl translate-x-1/3" />
       </div>
 
       <div className="section-container relative z-10">
@@ -90,26 +83,25 @@ export default function Resume() {
           transition={{ duration: 0.6 }}
         >
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <span className="text-primary-600 dark:text-primary-400 font-mono text-sm tracking-wider uppercase">
               Resume
             </span>
             <h2 className="heading-2 mt-2 text-gray-900 dark:text-white">
-              Download & Share
+              My Resume
             </h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Get a copy of my resume or share it with others who might be interested.
+            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xl mx-auto text-sm italic">
+              View or download my resume to learn more about my experience and qualifications.
             </p>
           </div>
 
-          {/* Resume Card */}
+          {/* Resume Card - Clean & Minimal */}
           <motion.div
-            className="max-w-4xl mx-auto"
-            animate={{ y: [0, -10, 0] }}
+            className="max-w-2xl mx-auto"
+            animate={{ y: [0, -8, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <div className="card p-4 md:p-6 animate-neon-pulse">
-              {/* Preview Card (shown when PDF viewer is closed) */}
+            <div className="card p-6 md:p-8 bg-transparent dark:bg-transparent">
               <AnimatePresence mode="wait">
                 {!showPdfViewer ? (
                   <motion.div
@@ -117,44 +109,107 @@ export default function Resume() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg p-8 md:p-12 mb-6"
+                    className="text-center py-8"
                   >
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                      {/* Avatar */}
-                      <div className="flex-shrink-0">
-                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg">
-                          <span className="text-3xl md:text-4xl font-bold text-white">JA</span>
-                        </div>
-                      </div>
+                    {/* Simple Icon */}
+                    <motion.div
+                      className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-lg"
+                      whileHover={{ scale: 1.05, rotate: 3 }}
+                    >
+                      <FiFileText className="w-10 h-10 text-white" />
+                    </motion.div>
 
-                      {/* Info */}
-                      <div className="text-center md:text-left flex-1">
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                          Jharana Adhikari
-                        </h3>
-                        <p className="text-lg text-primary-600 dark:text-primary-400 font-medium mb-3">
-                          Full Stack & AI Engineer
-                        </p>
-                        <p className="text-gray-600 dark:text-gray-400 mb-4">
-                          3+ years of experience in building scalable web applications and AI solutions.
-                          Specialized in Python, React, FastAPI, and Machine Learning.
-                        </p>
-                        <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                          <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
-                            Python
-                          </span>
-                          <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
-                            React
-                          </span>
-                          <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
-                            AI/ML
-                          </span>
-                          <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm">
-                            FastAPI
-                          </span>
-                        </div>
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      Jharana Adhikari
+                    </h3>
+                    <p className="text-primary-600 dark:text-primary-400 text-sm mb-2">
+                      Full Stack Software Developer & AI Engineer
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 max-w-md mx-auto">
+                      3+ years of experience in building scalable softwares, web applications and AI solutions.
+                    </p>
+
+                    {/* Action Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
+                      <motion.button
+                        onClick={() => setShowPdfViewer(true)}
+                        className="btn-primary flex-1"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <FiEye className="w-5 h-5 mr-2" />
+                        View
+                      </motion.button>
+
+                      <motion.a
+                        href={resumeUrl}
+                        download="Jharana_Adhikari_Resume.pdf"
+                        className="btn-secondary flex-1 justify-center"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <FiDownload className="w-5 h-5 mr-2" />
+                        Download
+                      </motion.a>
+
+                      <div className="relative flex-1">
+                        <motion.button
+                          onClick={() => setShowShareMenu(!showShareMenu)}
+                          className="btn-secondary w-full justify-center"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <FiShare2 className="w-5 h-5 mr-2" />
+                          Share
+                        </motion.button>
+
+                        {/* Share Menu */}
+                        <AnimatePresence>
+                          {showShareMenu && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 10 }}
+                              className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-20"
+                            >
+                              <button
+                                onClick={handleCopyLink}
+                                className="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm"
+                              >
+                                {copied ? (
+                                  <FiCheck className="w-4 h-4 text-green-500" />
+                                ) : (
+                                  <FiCopy className="w-4 h-4 text-gray-500" />
+                                )}
+                                <span className="text-gray-700 dark:text-gray-300">
+                                  {copied ? 'Copied!' : 'Copy Link'}
+                                </span>
+                              </button>
+                              <div className="border-t border-gray-200 dark:border-gray-700 mt-2 pt-2">
+                                {shareLinks.map((link) => (
+                                  <a
+                                    key={link.name}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm text-gray-700 dark:text-gray-300"
+                                  >
+                                    <link.icon className="w-4 h-4" />
+                                    <span>{link.name}</span>
+                                  </a>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </div>
+
+                    {/* Info */}
+                    <p className="mt-6 text-xs text-gray-500 dark:text-gray-500">
+                      PDF • 2 pages • Updated November 2025
+                    </p>
                   </motion.div>
                 ) : (
                   <motion.div
@@ -167,23 +222,21 @@ export default function Resume() {
                     {/* Close Button */}
                     <button
                       onClick={() => setShowPdfViewer(false)}
-                      className="absolute top-2 right-2 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className="absolute -top-2 -right-2 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     >
                       <FiX className="w-5 h-5 text-gray-600 dark:text-gray-300" />
                     </button>
 
-                    {/* PDF Viewer - Desktop uses iframe, Mobile shows message */}
-                    <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-6">
+                    {/* PDF Viewer */}
+                    <div className="relative w-full h-[450px] sm:h-[550px] md:h-[650px] bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
                       {isMobile ? (
                         <div className="flex flex-col items-center justify-center h-full p-6 text-center">
-                          <div className="w-20 h-20 mb-4 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
-                            <FiExternalLink className="w-10 h-10 text-primary-600 dark:text-primary-400" />
-                          </div>
-                          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                            View Resume
+                          <FiExternalLink className="w-12 h-12 text-primary-500 mb-4" />
+                          <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                            Open Resume
                           </h4>
-                          <p className="text-gray-600 dark:text-gray-400 mb-4">
-                            For the best viewing experience on mobile, open the PDF in a new tab or download it.
+                          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6">
+                            For better viewing on mobile, open in a new tab.
                           </p>
                           <a
                             href={resumeUrl}
@@ -191,7 +244,6 @@ export default function Resume() {
                             rel="noopener noreferrer"
                             className="btn-primary"
                           >
-                            <FiExternalLink className="w-5 h-5 mr-2" />
                             Open PDF
                           </a>
                         </div>
@@ -203,96 +255,17 @@ export default function Resume() {
                         />
                       )}
                     </div>
+
+                    {/* Close text link */}
+                    <button
+                      onClick={() => setShowPdfViewer(false)}
+                      className="mt-4 text-sm text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors mx-auto block"
+                    >
+                      ← Back to overview
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                {/* View Button */}
-                <button
-                  onClick={() => setShowPdfViewer(!showPdfViewer)}
-                  className={`flex-1 justify-center ${showPdfViewer ? 'btn-secondary' : 'btn-primary'}`}
-                >
-                  {showPdfViewer ? (
-                    <>
-                      <FiX className="w-5 h-5 mr-2" />
-                      Close Preview
-                    </>
-                  ) : (
-                    <>
-                      <FiEye className="w-5 h-5 mr-2" />
-                      View Resume
-                    </>
-                  )}
-                </button>
-
-                {/* Download Button */}
-                <a
-                  href={resumeUrl}
-                  download="Jharana_Adhikari_Resume.pdf"
-                  className="flex-1 btn-secondary justify-center"
-                >
-                  <FiDownload className="w-5 h-5 mr-2" />
-                  Download PDF
-                </a>
-
-                {/* Share Button */}
-                <div className="relative flex-1">
-                  <button
-                    onClick={() => setShowShareMenu(!showShareMenu)}
-                    className="w-full btn-secondary justify-center"
-                  >
-                    <FiShare2 className="w-5 h-5 mr-2" />
-                    Share
-                  </button>
-
-                  {/* Share Menu */}
-                  {showShareMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-full left-0 right-0 mb-2 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-10"
-                    >
-                      {/* Copy Link */}
-                      <button
-                        onClick={handleCopyLink}
-                        className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors mb-2"
-                      >
-                        {copied ? (
-                          <FiCheck className="w-5 h-5 text-green-500" />
-                        ) : (
-                          <FiCopy className="w-5 h-5 text-gray-500" />
-                        )}
-                        <span className="text-gray-700 dark:text-gray-300">
-                          {copied ? 'Link Copied!' : 'Copy Share Link'}
-                        </span>
-                      </button>
-
-                      <div className="border-t border-gray-200 dark:border-gray-700 pt-2">
-                        {shareLinks.map((link) => (
-                          <a
-                            key={link.name}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${link.color}`}
-                          >
-                            <link.icon className="w-5 h-5" />
-                            <span>{link.name}</span>
-                          </a>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              </div>
-
-              {/* Info Text */}
-              <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
-                Last updated: November 2025 • PDF format • 2 pages
-              </p>
             </div>
           </motion.div>
         </motion.div>
