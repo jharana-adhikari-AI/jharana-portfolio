@@ -267,7 +267,7 @@ export default function Resume() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 10 }}
-                              className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-transparent dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-20"
+                              className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-gradient-to-b from-primary-100 to-primary-200 dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-20"
                             >
                               <button
                                 onClick={handleCopyLink}

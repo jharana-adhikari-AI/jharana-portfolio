@@ -10,7 +10,7 @@ const testimonials = [
     name: 'Dinesh Thapa',
     role: 'CEO',
     company: 'XDezo Technology',
-    testimonial: "Jharana is one of the most dedicated and curious learners I've worked with at XDezo Technology. Her ability to grasp complex concepts in full-stack development and AI — and turn them into practical, high-quality solutions — is truly impressive. She brings a positive attitude, sharp analytical skills, and a consistent commitment to excellence. Any organization would be lucky to have her.",
+    testimonial: "Jharana is a dedicated and curious Full Stack & AI Engineer, turning complex concepts into high-quality solutions with a positive attitude and sharp analytical skills.",
     type: 'professional',
   },
   {
@@ -18,7 +18,7 @@ const testimonials = [
     name: 'Trishna Sapkota',
     role: 'Team Colleague',
     company: 'Ombryo Lab',
-    testimonial: "Working with Jharana at Ombryo Lab was truly inspiring. As an SEO Analyst, she brought strong analytical skills and a deep understanding of data-driven marketing. Her ability to apply data mining, regression analysis, and automation significantly improved our campaign performance and reporting efficiency. Jharana is hardworking, collaborative, and always eager to learn — a teammate who consistently elevates the quality of work around her.",
+    testimonial: "Jharana is a hardworking and collaborative SEO Analyst whose expertise in data-driven marketing, analytics, and automation consistently elevates team performance and campaign results.",
     type: 'professional',
   },
   {
@@ -190,7 +190,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
         >
           {/* Section Header */}
-          <div className="text-center mb-4">
+          <div className="text-center mb-2 sm:mb-4">
             <span className="text-primary-600 dark:text-primary-400 font-mono text-sm tracking-wider uppercase">
               Testimonials
             </span>
