@@ -124,13 +124,20 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-accent-100/50 to-accent-200/40 dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+    <section id="contact" className="section-padding bg-gradient-to-b from-accent-100/50 to-accent-200/40 dark:from-gray-950 dark:via-indigo-950/20 dark:to-gray-900 relative overflow-hidden">
       {/* Light mode decorative background */}
       <div className="absolute inset-0 dark:hidden">
         {/* Gradient orbs */}
         <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-bl from-primary-100 to-accent-50 rounded-full blur-3xl opacity-50" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent-100 to-primary-50 rounded-full blur-3xl opacity-40 -translate-x-1/4 translate-y-1/4" />
         <div className="absolute top-1/2 right-0 w-72 h-72 bg-gradient-to-l from-primary-50 to-transparent rounded-full blur-3xl opacity-30 translate-x-1/3" />
+      </div>
+
+      {/* Dark mode decorative background */}
+      <div className="absolute inset-0 hidden dark:block">
+        <div className="absolute top-0 right-1/3 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl -translate-x-1/4" />
+        <div className="absolute top-1/2 right-0 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl translate-x-1/4" />
         {/* Decorative elements */}
         <div className="absolute top-24 left-16 w-3 h-3 bg-primary-300 rounded-full opacity-40" />
         <div className="absolute top-40 right-24 w-4 h-4 bg-accent-300 rounded-full opacity-30" />
@@ -163,7 +170,11 @@ export default function ContactForm() {
 
           <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
             {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-8">
+            <motion.div
+              className="lg:col-span-2 space-y-8"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
               {/* Contact Details */}
               <div className="space-y-6">
                 {contactInfo.map((item) => (
@@ -214,7 +225,7 @@ export default function ContactForm() {
               </div>
 
               {/* Availability */}
-              <div className="card p-6">
+              <div className="card p-6 animate-neon-pulse bg-transparent dark:bg-transparent">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
@@ -225,11 +236,15 @@ export default function ContactForm() {
                   Open to full-time positions, freelance projects, and interesting collaborations in AI/ML and Full Stack development.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="card p-8">
+            <motion.div
+              className="lg:col-span-3"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <form onSubmit={handleSubmit} className="card p-8 animate-neon-pulse bg-transparent dark:bg-transparent">
                 <div className="grid sm:grid-cols-2 gap-6">
                   {/* Name */}
                   <div>
@@ -404,7 +419,7 @@ export default function ContactForm() {
                   )}
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

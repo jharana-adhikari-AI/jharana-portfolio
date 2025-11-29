@@ -109,7 +109,12 @@ export default function Bio() {
           {/* Profile Photo and Bio Text Side by Side */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column - Profile Photo */}
-            <motion.div variants={itemVariants} className="space-y-8 lg:sticky lg:top-24">
+            <motion.div
+              variants={itemVariants}
+              className="space-y-8 lg:sticky lg:top-24"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            >
               <div className="relative">
                 <div className="aspect-square max-w-md mx-auto">
                   <motion.div
@@ -157,10 +162,15 @@ export default function Bio() {
             </motion.div>
 
             {/* Right Column - Bio Text + Tab Buttons + Experience/Education */}
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div
+              variants={itemVariants}
+              className="space-y-8"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
               {/* Bio Text */}
               <motion.div
-                className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-800 dark:to-gray-800/50 border border-primary-100 dark:border-gray-700 overflow-hidden"
+                className="card relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-800 dark:to-gray-800/50 border border-primary-100 dark:border-gray-700 overflow-hidden animate-neon-pulse"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.2 }}
@@ -231,7 +241,7 @@ export default function Bio() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                     whileHover={{ scale: 1.01 }}
-                    className="card p-6 md:p-8 relative overflow-hidden group"
+                    className="card p-6 md:p-8 relative overflow-hidden group animate-neon-pulse"
                   >
                     {/* Decorative gradient */}
                     <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary-500 to-accent-500" />
@@ -279,9 +289,9 @@ export default function Bio() {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 + i * 0.05 }}
-                            className="flex items-start gap-3 text-gray-600 dark:text-gray-300 text-base italic"
+                            className="flex items-start gap-3 text-gray-600 dark:text-gray-300 text-sm italic"
                           >
-                            <span className="mt-2 w-2 h-2 bg-primary-500 rounded-full flex-shrink-0" />
+                            <span className="mt-1.5 w-1.5 h-1.5 bg-primary-500 rounded-full flex-shrink-0" />
                             <span>{highlight}</span>
                           </motion.li>
                         ))}
@@ -306,7 +316,7 @@ export default function Bio() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.15, duration: 0.5 }}
                     whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
-                    className="card p-6 relative overflow-hidden group"
+                    className="card p-6 relative overflow-hidden group animate-neon-pulse"
                   >
                     {/* Decorative background */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-accent-500/10 to-primary-500/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />

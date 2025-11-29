@@ -68,8 +68,21 @@ export default function Resume() {
   ]
 
   return (
-    <section id="resume" className="section-padding bg-gray-50 dark:bg-gray-900">
-      <div className="section-container">
+    <section id="resume" className="section-padding bg-gradient-to-b from-primary-100/60 to-primary-200/40 dark:from-gray-900 dark:via-purple-950/20 dark:to-gray-950 relative overflow-hidden">
+      {/* Light mode decorative background */}
+      <div className="absolute inset-0 dark:hidden">
+        <div className="absolute top-1/4 left-0 w-80 h-80 bg-gradient-to-br from-primary-100 to-accent-50 rounded-full blur-3xl opacity-50 -translate-x-1/3" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-tl from-accent-100 to-primary-50 rounded-full blur-3xl opacity-40 translate-y-1/3" />
+      </div>
+
+      {/* Dark mode decorative background */}
+      <div className="absolute inset-0 hidden dark:block">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 right-0 w-64 h-64 bg-fuchsia-600/5 rounded-full blur-3xl translate-x-1/3" />
+      </div>
+
+      <div className="section-container relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -90,8 +103,12 @@ export default function Resume() {
           </div>
 
           {/* Resume Card */}
-          <div className="max-w-4xl mx-auto">
-            <div className="card p-4 md:p-6">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <div className="card p-4 md:p-6 animate-neon-pulse">
               {/* Preview Card (shown when PDF viewer is closed) */}
               <AnimatePresence mode="wait">
                 {!showPdfViewer ? (
@@ -277,7 +294,7 @@ export default function Resume() {
                 Last updated: November 2025 • PDF format • 2 pages
               </p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

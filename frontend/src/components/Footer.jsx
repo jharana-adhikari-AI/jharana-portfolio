@@ -1,4 +1,5 @@
-import { FiGithub, FiLinkedin, FiHeart, FiMail, FiPhone } from 'react-icons/fi'
+import { motion } from 'framer-motion'
+import { FiGithub, FiLinkedin, FiHeart, FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
 
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/jharana-adhikari-AI', label: 'GitHub' },
@@ -8,9 +9,12 @@ const socialLinks = [
 ]
 
 const footerLinks = [
-  { name: 'Bio', href: '#bio' },
+  { name: 'About Me', href: '#bio' },
   { name: 'Skills', href: '#skills' },
   { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Achievements', href: '#achievements' },
+  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Resume', href: '#resume' },
   { name: 'Contact', href: '#contact' },
 ]
 
@@ -26,71 +30,110 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-12">
-      <div className="section-container">
-        <div className="grid md:grid-cols-3 gap-8 pb-8 border-b border-gray-800">
-          {/* Brand */}
-          <div>
-            <a href="#hero" className="inline-block font-display font-bold text-2xl mb-4">
-              JA<span className="text-primary-500">.</span>
-            </a>
-            <p className="text-gray-400 text-sm max-w-xs">
-              Full Stack & AI Engineer building scalable web and AI solutions
-              with expertise in Python, React, FastAPI, and Machine Learning.
-            </p>
-          </div>
+    <footer className="relative bg-gradient-to-b from-primary-100/60 to-primary-200/50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-900 text-gray-900 dark:text-white py-16 overflow-hidden">
+      {/* Light mode decorative background */}
+      <div className="absolute inset-0 dark:hidden">
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-primary-100 to-accent-50 rounded-full blur-3xl opacity-40" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-tl from-accent-100 to-primary-50 rounded-full blur-3xl opacity-50" />
+      </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {footerLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-gray-400 hover:text-white transition-colors text-sm"
+      {/* Dark mode decorative background */}
+      <div className="absolute inset-0 hidden dark:block">
+        <div className="absolute top-0 right-1/3 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl -translate-x-1/4" />
+        <div className="absolute top-1/2 right-0 w-64 h-64 bg-violet-600/10 rounded-full blur-3xl translate-x-1/4" />
+        {/* Subtle pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      </div>
+
+      <div className="section-container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="grid md:grid-cols-3 gap-8 pb-8 border-b border-primary-200 dark:border-gray-800">
+            {/* Brand */}
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <a href="#hero" className="inline-block font-display font-bold text-2xl mb-4">
+                <span className="text-gradient">JA</span><span className="text-primary-500">.</span>
+              </a>
+              <p className="text-gray-600 dark:text-gray-400 text-sm max-w-xs italic">
+                Full Stack & AI Engineer building scalable web and AI solutions
+                with expertise in Python, React, FastAPI, and Machine Learning.
+              </p>
+            </motion.div>
+
+            {/* Quick Links */}
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white">Quick Links</h3>
+              <ul className="space-y-2">
+                {footerLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors text-sm"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Social */}
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white">Connect</h3>
+              <div className="flex gap-3">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target={social.href.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="w-10 h-10 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center
+                               text-gray-600 dark:text-gray-400 hover:bg-primary-600 hover:text-white
+                               dark:hover:bg-primary-600 transition-all shadow-md"
+                    aria-label={social.label}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+                ))}
+              </div>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mt-4 flex items-center gap-2">
+                <FiMapPin className="w-4 h-4 text-primary-500" />
+                Toronto, ON, Canada
+              </p>
+            </motion.div>
           </div>
 
-          {/* Social */}
-          <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center
-                             text-gray-400 hover:bg-primary-600 hover:text-white transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
-            <p className="text-gray-400 text-sm mt-4">
-              Toronto, ON, Canada
+          {/* Bottom */}
+          <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-gray-600 dark:text-gray-400 text-sm">
+              © {currentYear} Jharana Adhikari. All rights reserved.
             </p>
+            <motion.p
+              className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-1"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              Made with <FiHeart className="w-4 h-4 text-red-500 animate-pulse" /> using React & Tailwind
+            </motion.p>
           </div>
-        </div>
-
-        {/* Bottom */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Jharana Adhikari. All rights reserved.
-          </p>
-          <p className="text-gray-400 text-sm flex items-center gap-1">
-            Made with <FiHeart className="w-4 h-4 text-red-500" /> using React & Tailwind
-          </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

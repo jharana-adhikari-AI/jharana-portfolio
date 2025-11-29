@@ -61,10 +61,19 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  // Check for mobile device
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Auto-play carousel
   useEffect(() => {
@@ -74,6 +83,16 @@ export default function Testimonials() {
     }, 6000)
     return () => clearInterval(timer)
   }, [isAutoPlaying, currentIndex])
+
+  // Handle swipe/drag
+  const handleDragEnd = (event, info) => {
+    const threshold = 50
+    if (info.offset.x < -threshold) {
+      nextSlide()
+    } else if (info.offset.x > threshold) {
+      prevSlide()
+    }
+  }
 
   const goToSlide = (index) => {
     setCurrentIndex(index)
@@ -186,7 +205,14 @@ export default function Testimonials() {
           {/* 3D Fan Carousel */}
           <div className="relative h-[420px] sm:h-[450px] md:h-[480px] mx-auto max-w-6xl">
             {/* Cards Container */}
-            <div className="relative h-full flex items-center justify-center" style={{ perspective: '1500px' }}>
+            <motion.div
+              className="relative h-full flex items-center justify-center touch-pan-y"
+              style={{ perspective: '1500px' }}
+              drag={isMobile ? 'x' : false}
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={handleDragEnd}
+            >
               {testimonials.map((testimonial, index) => {
                 const style = getCardStyle(index)
                 return (
@@ -295,29 +321,33 @@ export default function Testimonials() {
                   </motion.div>
                 )
               })}
-            </div>
+            </motion.div>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50
-                         p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
-                         text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
-                         hover:scale-110 active:scale-95 transition-all"
-              aria-label="Previous testimonial"
-            >
-              <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50
-                         p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
-                         text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
-                         hover:scale-110 active:scale-95 transition-all"
-              aria-label="Next testimonial"
-            >
-              <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
+            {/* Navigation Arrows - Hidden on mobile */}
+            {!isMobile && (
+              <>
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50
+                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
+                             hover:scale-110 active:scale-95 transition-all"
+                  aria-label="Previous testimonial"
+                >
+                  <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50
+                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
+                             hover:scale-110 active:scale-95 transition-all"
+                  aria-label="Next testimonial"
+                >
+                  <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </>
+            )}
           </div>
 
           {/* Dots Navigation */}

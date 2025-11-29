@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiExternalLink, FiGithub, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
@@ -59,10 +59,19 @@ const projects = [
 export default function PortfolioGrid() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
+
+  // Check for mobile device
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Auto-play carousel
   useEffect(() => {
@@ -72,6 +81,16 @@ export default function PortfolioGrid() {
     }, 5000)
     return () => clearInterval(timer)
   }, [isAutoPlaying, currentIndex])
+
+  // Handle swipe/drag
+  const handleDragEnd = (event, info) => {
+    const threshold = 50
+    if (info.offset.x < -threshold) {
+      nextSlide()
+    } else if (info.offset.x > threshold) {
+      prevSlide()
+    }
+  }
 
   const goToSlide = (index) => {
     setCurrentIndex(index)
@@ -183,7 +202,14 @@ export default function PortfolioGrid() {
           {/* 3D Carousel */}
           <div className="relative h-[400px] sm:h-[420px] md:h-[420px] perspective-1000 mx-auto max-w-6xl">
             {/* Cards Container */}
-            <div className="relative h-full flex items-center justify-center" style={{ perspective: '1200px' }}>
+            <motion.div
+              className="relative h-full flex items-center justify-center touch-pan-y"
+              style={{ perspective: '1200px' }}
+              drag={isMobile ? 'x' : false}
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={handleDragEnd}
+            >
               {projects.map((project, index) => {
                 const style = getCardStyle(index)
                 return (
@@ -323,29 +349,33 @@ export default function PortfolioGrid() {
                   </motion.div>
                 )
               })}
-            </div>
+            </motion.div>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevSlide}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40
-                         p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
-                         text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
-                         hover:scale-110 active:scale-95 transition-all"
-              aria-label="Previous project"
-            >
-              <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40
-                         p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
-                         text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
-                         hover:scale-110 active:scale-95 transition-all"
-              aria-label="Next project"
-            >
-              <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
+            {/* Navigation Arrows - Hidden on mobile */}
+            {!isMobile && (
+              <>
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40
+                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
+                             hover:scale-110 active:scale-95 transition-all"
+                  aria-label="Previous project"
+                >
+                  <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40
+                             p-2 sm:p-3 rounded-full bg-white dark:bg-gray-800 shadow-xl
+                             text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400
+                             hover:scale-110 active:scale-95 transition-all"
+                  aria-label="Next project"
+                >
+                  <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                </button>
+              </>
+            )}
           </div>
 
           {/* Dots Navigation */}

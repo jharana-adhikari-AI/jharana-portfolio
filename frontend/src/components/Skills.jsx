@@ -180,7 +180,7 @@ export default function Skills() {
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   activeCategory === index
                     ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    : 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 border border-purple-800 dark:border-blue-500/30 shadow-[0_0_10px_rgba(88,28,135,0.4)] dark:shadow-[0_0_10px_rgba(59,130,246,0.3)]'
                 }`}
               >
                 {category.name}
@@ -197,11 +197,15 @@ export default function Skills() {
             transition={{ duration: 0.3 }}
             className="max-w-2xl mx-auto"
           >
-            <div className="card p-8 space-y-6">
+            <motion.div
+              className="card p-8 space-y-6 animate-neon-pulse"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
               {skillCategories[activeCategory].skills.map((skill, index) => (
                 <SkillBar key={skill.name} skill={skill} inView={inView} />
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Additional Stats */}
@@ -217,7 +221,7 @@ export default function Skills() {
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="text-center p-6 rounded-2xl bg-gray-50 dark:bg-gray-900"
+                className="card text-center p-6 animate-neon-pulse"
                 whileHover={{ y: -5 }}
               >
                 <div className="text-3xl md:text-4xl font-bold text-gradient">
